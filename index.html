@@ -46,36 +46,484 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #FAF7F2;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #2D3748;
-        }
-        .font-display {
-            font-family: 'Cormorant Garamond', serif;
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #FAF7F2;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #0D9488;
-            border-radius: 4px;
-        }
-    </style>
+  <style> /* ==========================================================================
+   TRANÇAS DA BIA - ESTILOS COMPLETOS (CSS)
+   ========================================================================== */
+
+/* 1. VARIÁVEIS DE CORES E IDENTIDADE VISUAL */
+:root {
+  --primary-teal: #14b8a6;
+  --primary-teal-dark: #0d9488;
+  --primary-teal-light: #e6fffa;
+  --bg-nude: #faf7f2;
+  --bg-white: #ffffff;
+  --text-dark: #2d3748;
+  --text-muted: #64748b;
+  --accent-bronze: #8c5a2b;
+  --accent-bronze-light: #f5efe6;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(13, 148, 136, 0.08);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
+
+/* 2. RESET E ESTILOS GERAIS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-nude);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* 3. BARRA DE ROLAGEM PERSONALIZADA */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-nude);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-teal-dark);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-teal);
+}
+
+/* 4. CABEÇALHO & NAVEGAÇÃO */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(13, 148, 136, 0.1);
+  padding: 1rem 1.5rem;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-bronze);
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-bronze);
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-teal-dark);
+}
+
+/* 5. SEÇÃO HERO (BOAS-VINDAS) */
+.hero-section {
+  padding: 4rem 1.5rem 3rem;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(230, 255, 250, 0.4) 0%, var(--bg-nude) 100%);
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+/* 6. FILTROS E BUSCA DO CATÁLOGO */
+.catalog-controls {
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.85rem 1.25rem 0.85rem 2.75rem;
+  border-radius: 50px;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  background-color: var(--bg-white);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary-teal);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--primary-teal-dark);
+  color: var(--bg-white);
+  border-color: var(--primary-teal-dark);
+}
+
+/* 7. GRADE DE CARDS DO CATÁLOGO DE TRANÇAS */
+.catalog-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+/* CONTAINER DAS IMAGENS DOS CARDS (AJUSTE PERFEITO - SEM CORTE) */
+.service-card-image-container,
+.card-img-wrapper {
+  width: 100% !important;
+  height: 280px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: var(--bg-nude) !important;
+}
+
+.service-card-image-container img,
+.card-img-wrapper img,
+.service-card img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: top center !important; /* Alinha o enquadramento no topo da cabeça */
+  display: block !important;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-card-image-container img {
+  transform: scale(1.04);
+}
+
+/* BADGES E TAGS SOBRE A IMAGEM */
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--primary-teal-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-duration {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: rgba(45, 55, 72, 0.85);
+  color: #ffffff;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+
+/* CONTEÚDO DO CARD */
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  color: var(--text-dark);
+  margin-bottom: 0.35rem;
+}
+
+.card-description {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--bg-nude);
+}
+
+.card-price {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent-bronze);
+}
+
+/* BOTÃO DE AGENDAMENTO VIA WHATSAPP */
+.btn-whatsapp {
+  background-color: #25d366;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1eb857;
+  transform: scale(1.02);
+}
+
+/* 8. SEÇÃO DICAS E CUIDADOS */
+.section-container {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 0 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  color: var(--text-dark);
+}
+
+.section-subtitle {
+  color: var(--primary-teal-dark);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.tip-card {
+  background: var(--bg-white);
+  padding: 1.75rem;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary-teal);
+  box-shadow: var(--shadow-sm);
+}
+
+.tip-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-teal-dark);
+  margin-bottom: 0.5rem;
+}
+
+.tip-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* 9. GALERIA DE FOTOS */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* 10. BOTÃO FLUTUANTE DO WHATSAPP */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  z-index: 999;
+  text-decoration: none;
+  font-size: 30px;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+/* 11. RODAPÉ (FOOTER) */
+footer {
+  background-color: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 3rem 1.5rem 1.5rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* 12. ADAPTAÇÕES PARA DISPOSITIVOS MÓVEIS (CELULARES) */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .catalog-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  
+  .btn-whatsapp {
+    justify-content: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .service-card-image-container,
+  .card-img-wrapper {
+    height: 300px !important; /* Altura generosa no celular para enquadrar perfeitamente */
+  }
+} </style>
 </head>
 <body class="antialiased text-gray-800">
 
-    <!-- BARRA SUPERIOR DE AVISO -->
-    <div class="bg-brandTeal-700 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium flex items-center justify-center gap-2 shadow-inner">
-        <i class="fa-solid fa-sparkles text-amber-300"></i>
-        <span>Agenda aberta! Escolha seu modelo e agende diretamente pelo WhatsApp: </span>
-        <i class="fa-solid fa-sparkles text-amber-300"></i>
-    </div>
+   
+    
 
     <!-- CABEÇALHO / HEADER -->
     <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-teal-100 transition-all shadow-sm">
@@ -324,7 +772,7 @@
 
         <!-- GRADE DE IMAGENS -->
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('nagofeminina1.jpeg')">
                 <img src="nagofeminina1.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
@@ -332,7 +780,7 @@
             </div>
 
              
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('nagofeminina2.jpeg')">
                 <img src="nagofeminina2.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
@@ -340,35 +788,35 @@
             </div>
 
              
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('nagofeminina3.jpeg')">
                 <img src="nagofeminina3.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('nagofeminina4.jpeg')">
                 <img src="nagofeminina4.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('nagofeminina5.jpeg')">
                 <img src="nagofeminina5.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('nagofeminina6.jpeg')">
                 <img src="nagofeminina6.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('nagofeminina7.jpeg')">
                 <img src="nagofeminina7.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
@@ -377,35 +825,35 @@
 
             
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('tiara1.jpeg')">
                 <img src="tiara1.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('tiara2.jpeg')">
                 <img src="tiara2.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('tiara3.jpeg')">
                 <img src="tiara3.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('tiara4.jpeg')">
                 <img src="tiara4.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('tiara5.jpeg')">
                 <img src="tiara5.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
@@ -414,131 +862,230 @@
 
               
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('penteado1.jpeg')">
                 <img src="penteado1.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
-                <img src="penteado2.jpeg]" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('penteado2.jpeg')">
+                <img src="penteado2.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('penteado3.jpeg')">
                 <img src="penteado3.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('penteado4.jpeg')">
                 <img src="penteado4.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('penteado5.jpeg')">
                 <img src="penteado5.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('penteado6.jpeg')">
                 <img src="penteado6.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('penteado7.jpeg')">
                 <img src="penteado7.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('penteado8.jpeg')">
                 <img src="penteado8.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80', 'Boxeadora com Jumbo')">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('boxeadorajumbo1.jpeg')">
                 <img src="boxeadorajumbo1.jpeg" alt="Boxeadora Jumbo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80', 'Boxeadora com Jumbo')">
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('boxeadorajumbo2.jpeg')">
                 <img src="boxeadorajumbo2.jpeg" alt="Boxeadora Jumbo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80', 'Boxeadora com Jumbo')">
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('boxeadorajumbo3.jpeg')">
                 <img src="boxeadorajumbo3.jpeg" alt="Boxeadora Jumbo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('ghana1.jpeg')">
                 <img src="ghana1.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-             <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+             <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('ghana2.jpeg')">
                 <img src="ghana2.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('ghana3.jpeg')">
                 <img src="ghana3.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('ghana4.jpeg')">
                 <img src="ghana4.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('ghana5.jpeg')">
                 <img src="ghana5.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1584297091622-af8e5fda9644?auto=format&fit=crop&w=1200&q=80', 'Tiara Simples Delicada')">
-                <img src="https://images.unsplash.com/photo-1584297091622-af8e5fda9644?auto=format&fit=crop&w=600&q=80" alt="Tiara Simples" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('tiarasimples1.jpeg')">
+                <img src="tiarasimples1.jpeg" alt="Tiara Simples" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80', 'Boxeadora Tradicional')">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Boxeadora Tradicional" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('tiarasimples2.jpeg')">
+                <img src="tiarasimples2.jpeg" alt="Tiara Simples" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                     <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
                 </div>
             </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('tiarasimples3.jpeg')">
+                <img src="tiarasimples3.jpeg" alt="Tiara Simples" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('tiarasimples4.jpeg')">
+                <img src="tiarasimples4.jpeg" alt="Tiara Simples" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('boxeadoratradicional1.jpeg')">
+                <img src="boxeadoratradicional1.jpeg" alt="Boxeadora Tradicional" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('boxeadoratradicional2.jpeg')">
+                <img src="boxeadoratradicional2.jpeg" alt="Boxeadora Tradicional" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('boxeadoratradicional3.jpeg')">
+                <img src="boxeadoratradicional3.jpeg" alt="Boxeadora Tradicional" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('boxeadoratradicional4.jpeg')">
+                <img src="boxeadoratradicional4.jpeg" alt="Boxeadora Tradicional" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('masculina1.jpeg')">
+                <img src="masculina1.jpeg" alt="masculina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('masculina2.jpeg')">
+                <img src="masculina2.jpeg" alt="masculina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('masculina3.jpeg')">
+                <img src="masculina3.jpeg" alt="masculina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('masculina4.jpeg')">
+                <img src="masculina4.jpeg" alt="masculina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('masculina5.jpeg')">
+                <img src="masculina5.jpeg" alt="masculina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('masculina6.jpeg')">
+                <img src="masculina6.jpeg" alt="masculina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('masculina7.jpeg')">
+                <img src="masculina7.jpeg" alt="masculina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('masculina8.jpeg ')">
+                <img src="masculina8.jpeg" alt="masculina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -714,7 +1261,7 @@
                 price: "A partir de R$ 40,00",
                 badge: "Clássico",
                 duration: "1h - 2h",
-                image: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=800&q=80",
+                image: "nagofeminina1.jpeg",
                 description: "Tranças rasteiras clássicas feitas rente ao couro cabeludo, com linhas limpas e versatilidade total."
             },
             {
@@ -724,7 +1271,7 @@
                 price: "A partir de R$ 100,00",
                 badge: "Estilo & Atitude",
                 duration: "1.5h - 2.5h",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+                image: "masculina7.jpeg",
                 description: "Design exclusivo e alinhado para o público masculino, garantindo durabilidade e estilo único."
             },
             {
@@ -734,7 +1281,7 @@
                 price: "R$ 65,00",
                 badge: "Delicado",
                 duration: "1h",
-                image: "https://images.unsplash.com/photo-1584297091622-af8e5fda9644?auto=format&fit=crop&w=800&q=80",
+                image: "tiarasimples1.jpeg",
                 description: "Trança estilizada delicada na parte frontal da cabeça, perfeita para o dia a dia com praticidade."
             },
             {
@@ -744,7 +1291,7 @@
                 price: "R$ 75,00 a R$ 85,00",
                 badge: "Exclusivo",
                 duration: "1.5h",
-                image: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=800&q=80",
+                image: "tiara1.jpeg",
                 description: "Desenhos geométricos e personalizados na tiara, criando um visual marcante e autoral."
             },
             {
@@ -754,8 +1301,8 @@
                 price: "R$ 120,00",
                 badge: "Eventos & Festas",
                 duration: "2h - 3h",
-                image: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80",
-                description: "Penteados artísticos elaborados com tranças para festas, formaturas e eventos especiais."
+                image: "penteado3.jpeg",
+                description: "Penteados artísticos elaborados para festas, formaturas e eventos especiais."
             },
             {
                 id: 6,
@@ -764,7 +1311,7 @@
                 price: "R$ 50,00",
                 badge: "Prático",
                 duration: "45min",
-                image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+                image: "boxeadoratradicional1.jpeg",
                 description: "Duas tranças laterais embutidas e firmes, oferecendo praticidade e atitude."
             },
             {
@@ -774,7 +1321,7 @@
                 price: "R$ 90,00",
                 badge: "Mais Pedido",
                 duration: "1.5h",
-                image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80",
+                image: "boxeadorajumbo1.jpeg",
                 description: "Boxeadora encorpada com adição de fibra sintética jumbo para maior volume e comprimento."
             },
             {
@@ -784,7 +1331,7 @@
                 price: "A partir de R$ 140,00",
                 badge: "Premium",
                 duration: "2.5h - 3.5h",
-                image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80",
+                image: "ghana5.jpeg",
                 description: "Tranças com técnica de alimentação gradual de fibra, resultado sofisticado e degradê impecável."
             }
         ];
