@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tranças da Bia - Nagô e Penteados</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandTeal: {
+                            50: '#F0FDFA',
+                            100: '#CCFBF1',
+                            200: '#99F6E4',
+                            300: '#5EEAD4',
+                            400: '#2DD4BF',
+                            500: '#14B8A6',
+                            600: '#0D9488',
+                            700: '#0F766E',
+                            800: '#115E59',
+                            900: '#134E4A',
+                        },
+                        brandBronze: {
+                            light: '#C69C6D',
+                            DEFAULT: '#8C5A2B',
+                            dark: '#5F3B1A',
+                        },
+                        nudeBg: '#FAF7F2',
+                        nudeCard: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF7F2;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2D3748;
+        }
+        .font-display {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF7F2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0D9488;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- BARRA SUPERIOR DE AVISO -->
+    <div class="bg-brandTeal-700 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium flex items-center justify-center gap-2 shadow-inner">
+        <i class="fa-solid fa-sparkles text-amber-300"></i>
+        <span>Agenda aberta! Escolha seu modelo e agende diretamente pelo WhatsApp: </span>
+        <i class="fa-solid fa-sparkles text-amber-300"></i>
+    </div>
+
+    <!-- CABEÇALHO / HEADER -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-teal-100 transition-all shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 sm:h-24">
+                
+                <!-- LOGO DA CLIENTE -->
+                <a href="" class="flex items-center gap-3 group">
+                    <div id="logoContainer" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#FAF7F2] border-2 border-brandTeal-500/30 flex items-center justify-center overflow-hidden p-1 transition group-hover:scale-105 shadow-inner shrink-0">
+                        <img id="" src="logo.png">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-brandBronze leading-none group-hover:text-brandTeal-600 transition">Tranças da Bia</span>
+                        <span class="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-brandTeal-600 mt-1">NAGÔ E PENTEADOS</span>
+                    </div>
+                </a>
+
+                <!-- NAVEGAÇÃO DESKTOP -->
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                    <a href="#inicio" class="text-gray-700 hover:text-brandTeal-600 transition">Início</a>
+                    <a href="#catalogo" class="text-gray-700 hover:text-brandTeal-600 transition">Catálogo</a>
+                    <a href="#cuidados" class="text-gray-700 hover:text-brandTeal-600 transition">Dicas & Cuidados</a>
+                    <a href="#galeria" class="text-gray-700 hover:text-brandTeal-600 transition">Galeria</a>
+                    <a href="#contato" class="text-gray-700 hover:text-brandTeal-600 transition">Contato</a>
+                </nav>
+
+                <!-- BOTÃO DE AÇÃO DESKTOP -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="javascript:void(0)" onclick="openWhatsAppDirect('Olá, Bia! Gostaria de tirar dúvidas sobre os agendamentos.')" class="bg-brandTeal-600 hover:bg-brandTeal-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <!-- <span>Falar no WhatsApp</span> -->
+                    </a>
+                </div>
+
+                <!-- BOTÃO MENU MOBILE -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2.5 text-gray-700 hover:text-brandTeal-600 rounded-lg focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MENU MOBILE DROPDOWN -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-teal-100 px-4 pt-3 pb-6 space-y-3">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-brandTeal-50 hover:text-brandTeal-700 font-medium">Início</a>
+            <a href="#catalogo" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-brandTeal-50 hover:text-brandTeal-700 font-medium">Catálogo de Serviços</a>
+            <a href="#cuidados" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-brandTeal-50 hover:text-brandTeal-700 font-medium">Dicas & Cuidados</a>
+            <a href="#galeria" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-brandTeal-50 hover:text-brandTeal-700 font-medium">Galeria de Fotos</a>
+            <a href="#contato" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-brandTeal-50 hover:text-brandTeal-700 font-medium">Contato</a>
+            <div class="pt-2">
+                <a href="javascript:void(0)" onclick="openWhatsAppDirect('Olá, Bia! Vim pelo site e gostaria de agendar um horário.'); toggleMobileMenu();" class="w-full bg-emerald-600 text-white font-semibold py-3 px-4 rounded-xl text-center shadow flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Agendar pelo WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-brandTeal-50/70 via-nudeBg to-nudeBg pt-12 pb-16 sm:pt-20 sm:pb-24">
+        <div class="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 rounded-full bg-brandTeal-200/30 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -mb-12 -ml-12 w-80 h-80 rounded-full bg-brandBronze-light/10 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Lado Esquerdo -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brandTeal-100/90 border border-brandTeal-300/40 text-brandTeal-800 text-xs sm:text-sm font-semibold mb-6">
+                        <i class="fa-solid fa-crown text-amber-600"></i>
+                        <span>Especialista em Tranças Afro & Penteados</span>
+                    </div>
+                    
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                        Realce sua beleza com <span class="text-brandTeal-600 italic">tranças autênticas</span> e cheias de estilo.
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                        Nagôs tradicionais, masculinas, desenhadas, tiaras, boxeadoras e penteados sofisticados. Técnica impecável, acabamento limpo e extremo cuidado com a saúde dos seus fios.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#catalogo" class="w-full sm:w-auto bg-brandTeal-600 hover:bg-brandTeal-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-teal-500/20 transition transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-sparkles"></i>
+                            <span>Ver Catálogo de Preços</span>
+                        </a>
+                       
+                    </div>
+
+                    <!-- <div class="mt-10 pt-8 border-t border-gray-200/70 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-bold font-display text-brandBronze">100%</div>
+                            <div class="text-xs sm:text-sm text-gray-500">Acabamento Impecável</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-bold font-display text-brandTeal-700">Conforto</div>
+                            <div class="text-xs sm:text-sm text-gray-500">Sem dor ou tensão excessiva</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-bold font-display text-brandBronze">Pontual</div>
+                            <div class="text-xs sm:text-sm text-gray-500">Atendimento personalizado</div>
+                        </div>
+                    </div> -->
+                </div>
+
+                <!-- Lado Direito -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] bg-gray-100">
+                            <img src="fotoprofissional.jpeg" alt="Tranças Nagô e Penteados Bia" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white">
+                                <span class="bg-brandTeal-500/90 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full font-semibold mb-2 inline-block">Nagô & Penteados</span>
+                                <h3 class="font-display text-2xl font-bold">Estilo marcante para qualquer ocasião</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE CATÁLOGO (SERVIÇOS) -->
+    <section id="catalogo" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-brandTeal-600 text-xs sm:text-sm font-bold tracking-widest uppercase bg-brandTeal-50 px-3 py-1 rounded-full border border-brandTeal-200">Escolha o Seu Estilo</span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mt-3 mb-4">Catálogo de Serviços & Valores</h2>
+            <p class="text-gray-600 text-sm sm:text-base">Selecione o modelo desejado para agendar diretamente no WhatsApp da profissional.</p>
+        </div>
+
+        <!-- FILTROS E BUSCA -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10">
+            <!-- Categorias -->
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 w-full sm:w-auto" id="filterContainer">
+                <button onclick="filterCategory('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-brandTeal-600 text-white shadow-sm" data-category="all">Todos</button>
+                <button onclick="filterCategory('nago')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white text-gray-700 hover:bg-brandTeal-50 border border-gray-200" data-category="nago">Nagô</button>
+                <button onclick="filterCategory('tiara')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white text-gray-700 hover:bg-brandTeal-50 border border-gray-200" data-category="tiara">Tiaras</button>
+                <button onclick="filterCategory('boxeadora')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white text-gray-700 hover:bg-brandTeal-50 border border-gray-200" data-category="boxeadora">Boxeadoras</button>
+                <button onclick="filterCategory('especiais')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white text-gray-700 hover:bg-brandTeal-50 border border-gray-200" data-category="especiais">Penteados & Ghana</button>
+            </div>
+
+            <!-- Busca por nome -->
+            <div class="relative w-full sm:w-64">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <input type="text" id="searchInput" onkeyup="searchServices()" placeholder="Buscar trança..." class="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 bg-white text-xs sm:text-sm focus:outline-none focus:border-brandTeal-500 focus:ring-1 focus:ring-brandTeal-500">
+            </div>
+        </div>
+
+        <!-- GRID DE CARDS DOS SERVIÇOS -->
+        <div id="servicesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+            <!-- Renderizado dinamicamente pelo JS com os 8 itens oficiais -->
+        </div>
+
+    </section>
+
+    <!-- SEÇÃO DICAS E CUIDADOS -->
+    <section id="cuidados" class="py-16 sm:py-24 bg-white border-y border-teal-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brandBronze font-bold text-xs sm:text-sm tracking-widest uppercase bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Guia Prático</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">Dicas & Cuidados com as Tranças</h2>
+                <p class="text-gray-600 text-sm sm:text-base">Siga nossas recomendações para garantir máxima durabilidade, saúde do couro cabeludo e acabamento perfeito.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                
+                <!-- Card Pré-Trança -->
+                <div class="bg-nudeBg p-6 sm:p-8 rounded-3xl border border-teal-100 shadow-sm relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-brandTeal-100/50 rounded-bl-full pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-brandTeal-600 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                                <i class="fa-solid fa-sparkles"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brandTeal-600 tracking-wider">Passo 1</span>
+                                <h3 class="font-display text-2xl font-bold text-gray-900">Pré-Trança (Preparação)</h3>
+                            </div>
+                        </div>
+                        <ul class="space-y-4 text-xs sm:text-sm text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandTeal-600 mt-1 shrink-0"></i>
+                                <span><strong>Cabelo Limpo e Seco:</strong> Lave bem o cabelo antes do atendimento usando apenas shampoo para remover todo o acúmulo de sujeira. Certifique-se de que os fios estejam 100% secos.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandTeal-600 mt-1 shrink-0"></i>
+                                <span><strong>Sem óleos nem cremes:</strong> Não aplique óleos pesados, ativadores de cachos ou cremes sem enxágue na raiz no dia de fazer as tranças. Isso garante maior fixação e firmeza.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandTeal-600 mt-1 shrink-0"></i>
+                                <span><strong>Fios Desembaraçados:</strong> Penteie suavemente os cabelos antes da sessão para facilitar a divisão do couro cabeludo e evitar quebras.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card Pós-Trança & Manutenção -->
+                <div class="bg-nudeBg p-6 sm:p-8 rounded-3xl border border-amber-200/70 shadow-sm relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-amber-100/50 rounded-bl-full pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-brandBronze text-white flex items-center justify-center font-bold text-xl shadow-md">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brandBronze tracking-wider">Passo 2</span>
+                                <h3 class="font-display text-2xl font-bold text-gray-900">Pós-Trança & Manutenção</h3>
+                            </div>
+                        </div>
+                        <ul class="space-y-4 text-xs sm:text-sm text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandBronze mt-1 shrink-0"></i>
+                                <span><strong>Touca ou Fronha de Cetim:</strong> Durma sempre com touca de cetim para reduzir o atrito durante a noite, evitando o surgimento de frizz precoce.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandBronze mt-1 shrink-0"></i>
+                                <span><strong>Higienização Adequada:</strong> Lave apenas o couro cabeludo utilizando shampoo diluído em água com borrifador ou com as pontas dos dedos suavemente (sem esfregar com força).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandBronze mt-1 shrink-0"></i>
+                                <span><strong>Secagem Completa:</strong> Nunca durma com as tranças úmidas. Se necessário, use secador com ar frio ou morno para garantir a secagem da raiz.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandBronze mt-1 shrink-0"></i>
+                                <span><strong>Tempo Recomendado:</strong> Respeite o prazo limite recomendado para a retirada das tranças (geralmente entre 15 a 30 dias a depender do modelo) para preservar a saúde do seu cabelo natural.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO GALERIA DE INSPIRAÇÕES COM LIGHTBOX -->
+    <section id="galeria" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-brandTeal-600 text-xs sm:text-sm font-bold tracking-widest uppercase bg-brandTeal-50 px-3 py-1 rounded-full border border-brandTeal-200">Inspire-se</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">Galeria de Resultados</h2>
+            <p class="text-gray-600 text-sm sm:text-base">Clique nas imagens abaixo para visualizar cada detalhe em tamanho ampliado.</p>
+        </div>
+
+        <!-- GRADE DE IMAGENS -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+                <img src="nagofeminina1.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+                <img src="nagofeminina2.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+                <img src="nagofeminina3.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+                <img src="nagofeminina4.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+                <img src="nagofeminina5.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+                <img src="nagofeminina6.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80', 'Trança Nagô com Penteado Solto')">
+                <img src="nagofeminina7.jpeg" alt="Nagô Feminina" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+                <img src="tiara1.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+                <img src="tiara2.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+                <img src="tiara3.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+                <img src="tiara4.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1200&q=80', 'Tiara Desenhada')">
+                <img src="tiara5.jpeg" alt="Tiara Desenhada" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+              
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+                <img src="penteado1.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+              <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+                <img src="penteado2.jpeg]" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+                <img src="penteado3.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+                <img src="penteado4.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+                <img src="penteado5.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+                <img src="penteado6.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+                <img src="penteado7.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80', 'Penteado Artístico para Festas')">
+                <img src="penteado8.jpeg" alt="Penteado Elegante" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80', 'Boxeadora com Jumbo')">
+                <img src="boxeadorajumbo1.jpeg" alt="Boxeadora Jumbo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80', 'Boxeadora com Jumbo')">
+                <img src="boxeadorajumbo2.jpeg" alt="Boxeadora Jumbo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80', 'Boxeadora com Jumbo')">
+                <img src="boxeadorajumbo3.jpeg" alt="Boxeadora Jumbo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+                <img src="ghana1.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+             <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+                <img src="ghana2.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+                <img src="ghana3.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+                <img src="ghana4.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shad\ow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80', 'Ghana Braids Degradê')">
+                <img src="ghana5.jpeg" alt="Ghana Braids" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1584297091622-af8e5fda9644?auto=format&fit=crop&w=1200&q=80', 'Tiara Simples Delicada')">
+                <img src="https://images.unsplash.com/photo-1584297091622-af8e5fda9644?auto=format&fit=crop&w=600&q=80" alt="Tiara Simples" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+
+            <div class="relative group rounded-2xl overflow-hidden shadow-md cursor-pointer aspect-square bg-gray-100" onclick="openLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80', 'Boxeadora Tradicional')">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Boxeadora Tradicional" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-brandTeal-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
+                    <i class="fa-solid fa-magnifying-glass-plus text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE CONTATO & LOCALIZAÇÃO -->
+    <section id="contato" class="py-16 bg-white border-t border-teal-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-brandTeal-900 via-brandTeal-800 to-gray-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    
+                    <div class="lg:col-span-8">
+                        <span class="text-amber-300 text-xs sm:text-sm font-bold tracking-widest uppercase bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">Atendimento Personalizado</span>
+                        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-4">Pronta para transformar seu visual?</h2>
+                        <p class="text-teal-100 text-sm sm:text-base max-w-xl leading-relaxed mb-6">
+                            Entre em contato agora mesmo para agendar sua sessão ou tirar dúvidas sobre os modelos e disponibilidades de horários.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 font-bold">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-teal-200 text-[11px]">WhatsApp Oficial</p>
+                                    <p class="font-semibold text-white">(17) 99272-3343</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 font-bold">
+                                    <i class="fa-regular fa-clock text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-teal-200 text-[11px]">Horários</p>
+                                    <p class="font-semibold text-white">Segunda a Sábado (Com hora marcada)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 flex flex-col items-center lg:items-end justify-center">
+                        <a href="javascript:void(0)" onclick="openWhatsAppDirect('Olá, Bia! Vim pelo site e gostaria de agendar um horário.')" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-8 rounded-2xl shadow-xl transition transform hover:scale-105 flex items-center justify-center gap-3 text-base">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Chamar no WhatsApp</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ / FOOTER -->
+    <footer class="bg-gray-900 text-white pt-14 pb-10 border-t-4 border-brandTeal-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-white p-1 flex items-center justify-center">
+                            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='%238C5A2B' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><path d='M100 45 C75 45, 60 70, 70 100 C75 115, 80 125, 95 135 C105 130, 120 115, 125 95 C130 75, 120 45, 100 45 Z'/><path d='M80 40 C75 25, 110 20, 115 35 C125 30, 130 50, 115 55'/><path d='M85 85 Q92 80 100 85'/><path d='M80 95 C82 92 88 92 90 95'/><path d='M110 95 C112 92 118 92 120 95'/><path d='M95 115 Q100 120 105 115'/><path d='M90 145 Q100 160 110 145'/></g></svg>" alt="Logo Rodapé" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <span class="font-display text-2xl font-bold text-amber-200">Tranças da Bia</span>
+                            <p class="text-xs text-brandTeal-300">NAGÔ E PENTEADOS</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-xs sm:text-sm max-w-sm mb-6 leading-relaxed">
+                        Especialista em valorizar a estética afro com carinho, técnica autêntica e máximo respeito à sua beleza.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-brandTeal-600 flex items-center justify-center text-white transition" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openWhatsAppDirect('Olá, Bia!')" class="w-9 h-9 rounded-full bg-white/10 hover:bg-emerald-600 flex items-center justify-center text-white transition" title="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brandTeal-300 uppercase tracking-wider mb-4">Navegação</h4>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-gray-400">
+                        <li><a href="#inicio" class="hover:text-white transition">Início</a></li>
+                        <li><a href="#catalogo" class="hover:text-white transition">Catálogo de Serviços</a></li>
+                        <li><a href="#cuidados" class="hover:text-white transition">Dicas & Cuidados</a></li>
+                        <li><a href="#galeria" class="hover:text-white transition">Galeria de Fotos</a></li>
+                        <li><a href="#contato" class="hover:text-white transition">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brandTeal-300 uppercase tracking-wider mb-4">Atendimento</h4>
+                    <p class="text-xs sm:text-sm text-gray-400 mb-2"><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i> (17) 99272-3343</p>
+                    <p class="text-xs sm:text-sm text-gray-400 mb-2"><i class="fa-solid fa-clock text-brandTeal-400 mr-2"></i> Com hora marcada</p>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-6 text-center text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>&copy; <span id="year"></span> Tranças da Bia - Todos os direitos reservados.</p>
+                <p class="flex items-center gap-1">Desenvolvido com <i class="fa-solid fa-heart text-red-500"></i> para realçar sua autoestima.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+    <a href="javascript:void(0)" onclick="openWhatsAppDirect('Olá, tudo bem? Gostaria de agendar um horário com você!')" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-3xl transition-transform hover:scale-110 active:scale-95 group" title="Falar no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="absolute right-16 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md pointer-events-none">
+            (17) 99272-3343
+        </span>
+    </a>
+
+    <!-- MODAL CONFIRMAÇÃO DE AGENDAMENTO -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border border-teal-100">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl shadow-inner">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-gray-900">Agendar no WhatsApp</h3>
+                <p class="text-xs text-gray-500 mt-1">Você será redirecionada para a conversa oficial com a Bia.</p>
+            </div>
+
+            <div id="modalServiceSummary" class="bg-nudeBg border border-teal-100 p-4 rounded-2xl mb-5 flex items-center gap-4">
+                <!-- Preenchido via JS -->
+            </div>
+
+            <div class="space-y-3 mb-6">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Seu Nome (opcional):</label>
+                    <input type="text" id="clientNameInput" placeholder="Ex: Maria Clara" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs focus:ring-1 focus:ring-brandTeal-500 focus:outline-none">
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <button id="modalConfirmBtn" onclick="sendWhatsAppBooking()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Enviar Mensagem no WhatsApp</span>
+                </button>
+                <button onclick="closeBookingModal()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2 rounded-xl text-xs transition">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL LIGHTBOX DA GALERIA -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeLightbox()">
+        <div class="relative max-w-3xl w-full" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white hover:text-amber-300 text-2xl font-bold">
+                <i class="fa-solid fa-xmark"></i> Fechar
+            </button>
+            <img id="lightboxImage" src="" alt="Ampliado" class="w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl">
+            <p id="lightboxCaption" class="text-center text-white text-sm sm:text-base font-semibold mt-4 font-display"></p>
+        </div>
+    </div>
+
+    <!-- SCRIPT DA APLICAÇÃO -->
+    <script>
+        // WHATSAPP FIXO DE AGENDAMENTO
+        const DEFAULT_WHATSAPP_NUMBER = "5517992723343";
+
+        // ITENS DO CATÁLOGO SOLICITADOS COM DETALHES E PREÇOS EXACTOS
+        const servicesData = [
+            {
+                id: 1,
+                name: "Tranças nagô",
+                category: "nago",
+                price: "A partir de R$ 40,00",
+                badge: "Clássico",
+                duration: "1h - 2h",
+                image: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=800&q=80",
+                description: "Tranças rasteiras clássicas feitas rente ao couro cabeludo, com linhas limpas e versatilidade total."
+            },
+            {
+                id: 2,
+                name: "Nagô masculina",
+                category: "nago",
+                price: "A partir de R$ 100,00",
+                badge: "Estilo & Atitude",
+                duration: "1.5h - 2.5h",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+                description: "Design exclusivo e alinhado para o público masculino, garantindo durabilidade e estilo único."
+            },
+            {
+                id: 3,
+                name: "Tiara",
+                category: "tiara",
+                price: "R$ 65,00",
+                badge: "Delicado",
+                duration: "1h",
+                image: "https://images.unsplash.com/photo-1584297091622-af8e5fda9644?auto=format&fit=crop&w=800&q=80",
+                description: "Trança estilizada delicada na parte frontal da cabeça, perfeita para o dia a dia com praticidade."
+            },
+            {
+                id: 4,
+                name: "Tiara desenhada",
+                category: "tiara",
+                price: "R$ 75,00 a R$ 85,00",
+                badge: "Exclusivo",
+                duration: "1.5h",
+                image: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=800&q=80",
+                description: "Desenhos geométricos e personalizados na tiara, criando um visual marcante e autoral."
+            },
+            {
+                id: 5,
+                name: "Penteados",
+                category: "especiais",
+                price: "R$ 120,00",
+                badge: "Eventos & Festas",
+                duration: "2h - 3h",
+                image: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80",
+                description: "Penteados artísticos elaborados com tranças para festas, formaturas e eventos especiais."
+            },
+            {
+                id: 6,
+                name: "Boxeadora tradicional",
+                category: "boxeadora",
+                price: "R$ 50,00",
+                badge: "Prático",
+                duration: "45min",
+                image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+                description: "Duas tranças laterais embutidas e firmes, oferecendo praticidade e atitude."
+            },
+            {
+                id: 7,
+                name: "Boxeadora com jumbo",
+                category: "boxeadora",
+                price: "R$ 90,00",
+                badge: "Mais Pedido",
+                duration: "1.5h",
+                image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80",
+                description: "Boxeadora encorpada com adição de fibra sintética jumbo para maior volume e comprimento."
+            },
+            {
+                id: 8,
+                name: "Ghana braids",
+                category: "especiais",
+                price: "A partir de R$ 140,00",
+                badge: "Premium",
+                duration: "2.5h - 3.5h",
+                image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80",
+                description: "Tranças com técnica de alimentação gradual de fibra, resultado sofisticado e degradê impecável."
+            }
+        ];
+
+        let currentSelectedService = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderServices(servicesData);
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+
+        // RENDERIZAR SERVIÇOS
+        function renderServices(data) {
+            const container = document.getElementById('servicesGrid');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-gray-500">
+                        <i class="fa-solid fa-magnifying-glass text-4xl text-gray-300 mb-3"></i>
+                        <p class="font-medium">Nenhum serviço encontrado com esse termo.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            data.forEach(service => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-teal-100 flex flex-col justify-between group transform hover:-translate-y-1";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                            <img src="${service.image}" alt="${service.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-brandTeal-800 text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
+                                ${service.badge}
+                            </div>
+                        </div>
+
+                        <div class="p-5">
+                            <h3 class="font-display text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-brandTeal-700 transition mb-2">
+                                ${service.name}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mb-4">
+                                ${service.description}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-0">
+                        <div class="pt-3 border-t border-gray-100 flex items-baseline justify-between mb-4">
+                            <span class="text-xs text-gray-400 font-medium">Valor:</span>
+                            <span class="text-lg sm:text-xl font-bold font-display text-brandBronze">
+                                ${service.price}
+                            </span>
+                        </div>
+
+                        <button onclick="openBookingModal(${service.id})" class="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold py-3 px-4 rounded-xl shadow transition duration-200 flex items-center justify-center gap-2 text-xs sm:text-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Agendar via WhatsApp</span>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // FILTROS DE CATEGORIA
+        function filterCategory(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.className = "filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-brandTeal-600 text-white shadow-sm";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white text-gray-700 hover:bg-brandTeal-50 border border-gray-200";
+                }
+            });
+
+            if (category === 'all') {
+                renderServices(servicesData);
+            } else {
+                const filtered = servicesData.filter(s => s.category === category);
+                renderServices(filtered);
+            }
+        }
+
+        // BUSCA POR TEXTO
+        function searchServices() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = servicesData.filter(s => 
+                s.name.toLowerCase().includes(query) || 
+                s.description.toLowerCase().includes(query)
+            );
+            renderServices(filtered);
+        }
+
+        // MODAL DE AGENDAMENTO
+        function openBookingModal(serviceId) {
+            currentSelectedService = servicesData.find(s => s.id === serviceId);
+            if (!currentSelectedService) return;
+
+            const summary = document.getElementById('modalServiceSummary');
+            summary.innerHTML = `
+                <img src="${currentSelectedService.image}" alt="${currentSelectedService.name}" class="w-14 h-14 rounded-xl object-cover border border-gray-200">
+                <div>
+                    <h4 class="font-display font-bold text-base text-gray-900">${currentSelectedService.name}</h4>
+                    <p class="text-xs font-semibold text-brandBronze">${currentSelectedService.price}</p>
+                </div>
+            `;
+
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+            document.getElementById('clientNameInput').value = '';
+        }
+
+        // DISPARO DO WHATSAPP COM A MENSAGEM SOLICITADA
+        function sendWhatsAppBooking() {
+            if (!currentSelectedService) return;
+
+            const clientName = document.getElementById('clientNameInput').value.trim();
+
+            // Mensagem solicitada: "Olá, tudo bem? Gostaria de agendar para fazer esse [NOME DO SERVIÇO]."
+            let message = `Olá, tudo bem? Gostaria de agendar para fazer esse ${currentSelectedService.name}.`;
+            if (clientName) {
+                message += ` Meu nome é ${clientName}.`;
+            }
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${DEFAULT_WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+            closeBookingModal();
+        }
+
+        // ABRIR WHATSAPP DIRETO
+        function openWhatsAppDirect(customText) {
+            const message = encodeURIComponent(customText || "Olá, tudo bem? Gostaria de agendar um horário com você!");
+            window.open(`https://wa.me/${DEFAULT_WHATSAPP_NUMBER}?text=${message}`, '_blank');
+        }
+
+        // LIGHTBOX DA GALERIA
+        function openLightbox(imgSrc, caption) {
+            document.getElementById('lightboxImage').src = imgSrc;
+            document.getElementById('lightboxCaption').textContent = caption;
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // MENU MOBILE TOGGLE
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
